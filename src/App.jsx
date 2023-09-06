@@ -1,9 +1,13 @@
+import Header from './components/Header'
+import './App.css'
  
-export const App = () => {
+function App(){
   return (
     <>
+      <Header />
     </>
   )
 }
+export default App
 
 
