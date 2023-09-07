@@ -17,5 +17,4 @@ function Footer(){
         </Flex>
     )
 }
-
 export default Footer
