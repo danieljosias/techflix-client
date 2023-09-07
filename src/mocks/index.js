@@ -74,3 +74,14 @@ export const movies = [
     },
     
 ]
+
+export const comments = [
+    {
+        id: 1,
+        comments: 'O filme é muito bom!'
+    },
+    {
+        id: 2,
+        comments: 'Achei o filme chato!'
+    },
+]
