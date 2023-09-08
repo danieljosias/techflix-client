@@ -42,7 +42,7 @@ export const Alter = () => {
 
                 <Box display='flex' flexDirection='column' gap='2' mt='5' justifyContent='space-between'>
                     <Text fontSize='sm' fontWeight='medium'>Já possui conta? <Link href='/signin' fontSize='md' fontWeight='medium' color='black'>Entrar</Link></Text> 
-                    <Link href='/alter' fontSize='md' fontWeight='medium' color='black'>Deletar conta?</Link>
+                    <Link href='/delete-account' fontSize='md' fontWeight='medium' color='black'>Deletar conta?</Link>
                 </Box>
             </FormControl>
         </VStack>

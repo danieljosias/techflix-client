@@ -12,7 +12,7 @@ export const Router = () => {
       <Route exact path='/signin'>
         <SignIn/>
       </Route>
-      <Route exact path='/alter'>
+      <Route exact path='/alter-password'>
         <Alter/>
       </Route>
     </Switch>
