@@ -85,3 +85,18 @@ export const comments = [
         comments: 'Achei o filme chato!'
     },
 ]
+
+export const carousel = [
+    {
+        id: 1,
+        url: 'https://ottvsimg.ottvs.com.br/res/banner/08d5545e-c502-4f1b-a4a4-6d7ab44d4fa0.jpg'
+    },
+    {
+        id: 2,
+        url: 'https://ottvsimg.ottvs.com.br/res/banner/23611b95-e80a-4cab-927b-af7fea6d36f6.jpg'
+    },
+    {
+        id: 3,
+        url: 'https://ottvsimg.ottvs.com.br/res/banner/8e891b5d-0013-4125-84ba-b5a55b291101.jpg'
+    },
+]
