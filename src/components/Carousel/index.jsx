@@ -5,7 +5,7 @@ import { movies } from '../../mocks'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-function Carousel(){
+export const Carousel = () => {
     const action_movies = movies.filter((movies => movies.category === 'action'))
     const romance_movies = movies.filter((movies => movies.category === 'romance'))
     
@@ -27,4 +27,3 @@ function Carousel(){
         </Box>
     )
 }
-export default Carousel

@@ -3,6 +3,7 @@ import { SignUp } from '../pages/SignUp'
 import { SignIn } from '../pages/SignIn'
 import { Alter } from '../pages/Alter'
 import { Delete } from '../pages/Delete'
+import { Homepage } from '../pages/Homepage'
 
 export const Router = () => {
   return (
@@ -18,6 +19,9 @@ export const Router = () => {
       </Route>
       <Route exact path='/delete'>
         <Delete/>
+      </Route>
+      <Route exact path='/homepage'> 
+        <Homepage/>
       </Route>
     </Switch>
   );

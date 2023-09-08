@@ -1,7 +1,7 @@
 import { Flex, Box, Heading, Avatar, Input, Icon, Button } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
-function Header(){
+export const Header = () => {
     return(
         <Flex alignItems='center' justifyContent='space-between' bg='#D9D9D9' h='70px' p='5'>
             <Box>
@@ -16,4 +16,3 @@ function Header(){
         </Flex>
     ) 
 }
-export default Header

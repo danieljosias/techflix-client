@@ -2,7 +2,7 @@ import { Flex, Box, Heading, Icon, Link  } from '@chakra-ui/react'
 import { BsInstagram, BsLinkedin } from 'react-icons/bs'
 import { FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa'
 
-function Footer(){
+export const Footer = () => {
     return(
         <Flex bg='#D9D9D9' justifyContent='center' alignItems='center' textAlign='center' h='250px'>
             <Box> 
@@ -17,4 +17,3 @@ function Footer(){
         </Flex>
     )
 }
-export default Footer
