@@ -2,7 +2,7 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
 import { movies } from '../../mocks/movies'
-import { Box, Button, Flex, Heading, Text, Image } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text, Image, Input } from '@chakra-ui/react'
 
 export const Movies = () => {
     return(
@@ -39,7 +39,10 @@ export const Movies = () => {
             </Flex>
             
             <Flex>
-
+                <Heading as='h2'>Comentários</Heading>
+                <Box>
+                    <Input type='text'/>
+                </Box>
             </Flex>
             <Footer/>
         </>
