@@ -100,3 +100,4 @@ export const carousel = [
         url: 'https://ottvsimg.ottvs.com.br/res/banner/8e891b5d-0013-4125-84ba-b5a55b291101.jpg'
     },
 ]
+
