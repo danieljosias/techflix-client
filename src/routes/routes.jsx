@@ -4,6 +4,7 @@ import { SignIn } from '../pages/SignIn'
 import { Alter } from '../pages/Alter'
 import { Delete } from '../pages/Delete'
 import { Homepage } from '../pages/Homepage'
+import { Movies } from '../pages/Movies'
 
 export const Router = () => {
   return (
@@ -22,6 +23,9 @@ export const Router = () => {
       </Route>
       <Route exact path='/homepage'> 
         <Homepage/>
+      </Route>
+      <Route exact path='/movies'> 
+        <Movies/>
       </Route>
     </Switch>
   );

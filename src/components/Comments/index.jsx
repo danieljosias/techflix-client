@@ -2,7 +2,7 @@ import { Flex ,Avatar, Text, Box, Icon } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
 
 
-function Comments({data}){
+export const Comments = ({data}) => {
     return(
         <Flex alignItems='center' h='50px' m='10' justifyContent='space-between'>
            <Flex alignItems='center' gap='10'>
@@ -22,4 +22,3 @@ function Comments({data}){
         </Flex>
     )
 }
-export default Comments
