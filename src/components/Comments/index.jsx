@@ -4,8 +4,8 @@ import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
 
 export const Comments = ({data}) => {
     return(
-        <Flex alignItems='center' h='50px' m='10' justifyContent='space-between'>
-           <Flex alignItems='center' gap='10'>
+        <Flex alignItems='center' h='50px' m='10' justifyContent='space-between' bg='white'p='5'>
+           <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
                 <Text
                     fontWeight='bold'
@@ -13,6 +13,7 @@ export const Comments = ({data}) => {
                     whiteSpace='nowrap'
                     overflow='hidden'
                     w='250px'
+                    color='black'
                 > {data.comments} </Text>
            </Flex>
            <Box>
