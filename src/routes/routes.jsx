@@ -6,6 +6,7 @@ import { Delete } from '../pages/Delete'
 import { Homepage } from '../pages/Homepage'
 import { Movies } from '../pages/Movies'
 import { Watch } from '../pages/Watch'
+import { Search } from '../pages/Search'
 
 export const Router = () => {
   return (
@@ -30,6 +31,9 @@ export const Router = () => {
       </Route>
       <Route exact path='/watch'>
         <Watch/>
+      </Route>
+      <Route exact path='/search'>
+        <Search/>
       </Route>
     </Switch>
   );
