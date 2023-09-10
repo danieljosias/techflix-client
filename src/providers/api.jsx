@@ -1,20 +1,25 @@
+import { createContext } from 'react'
 import { api } from '../services/services'
+export const ApiContext = createContext([])
+import { useToast } from '@chakra-ui/toast'
 
-export const ApiProvider = ({children}) =>{
+export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
+
+    const toast = useToast()
 
     async function createUsers(data){
         try {
-            const res = await api.post('/clients', data)
+            const res = await api.post('/clients/', data)
             return res
         } catch (error) {
-            return error
+           return error
         }
     }
 
     async function login(data){
         try {
-            const res = await api.post('/login', data)
+            const res = await api.post('/login/', data)
             return res
         } catch (error) {
             return error
@@ -23,7 +28,7 @@ export const ApiProvider = ({children}) =>{
 
     async function createMovies(data){
         try {
-            const res = await api.post('/movies', {data, token})
+            const res = await api.post('/movies/', {data, token})
             return res
         } catch (error) {
             return error
@@ -32,7 +37,7 @@ export const ApiProvider = ({children}) =>{
 
     async function listMovies(){
         try {
-            const res = await api.get('/movies')
+            const res = await api.get('/movies/')
             return res
         } catch (error) {
             return error
@@ -41,7 +46,7 @@ export const ApiProvider = ({children}) =>{
 
     async function updateMovies(data){
         try {
-            const res = await api.patch('/movies',{ data, token})
+            const res = await api.patch('/movies/',{ data, token})
             return res
         } catch (error) {
             return error
@@ -50,7 +55,7 @@ export const ApiProvider = ({children}) =>{
 
     async function deleteMovies(){
         try {
-            const res = await api.delete('/movies',{token})
+            const res = await api.delete('/movies/',{token})
             return res
         } catch (error) {
             return error
@@ -59,7 +64,7 @@ export const ApiProvider = ({children}) =>{
 
     async function createComments(data){
         try {
-            const res = await api.post('/comments', {data, token})
+            const res = await api.post('/comments/', {data, token})
             return res
         } catch (error) {
             return error
@@ -68,7 +73,7 @@ export const ApiProvider = ({children}) =>{
 
     async function listComments(){
         try {
-            const res = await api.get('/comments')
+            const res = await api.get('/comments/')
             return res
         } catch (error) {
             return error
@@ -77,7 +82,7 @@ export const ApiProvider = ({children}) =>{
 
     async function updateComments(data){
         try {
-            const res = await api.patch('/comments', {data, token})
+            const res = await api.patch('/comments/', {data, token})
             return res
         } catch (error) {
             return error
@@ -86,19 +91,18 @@ export const ApiProvider = ({children}) =>{
 
     async function deleteComments(){
         try {
-            const res = await api.delete('/comments', {token})
+            const res = await api.delete('/comments/', {token})
             return res
         } catch (error) {
             return error
         }
     }
 
-    
     return(
-        <ApiProvider.Provider 
-        value={{createUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
+        <ApiContext.Provider 
+            value={{createUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
         >
             {children}
-        </ApiProvider.Provider>
+        </ApiContext.Provider>
     )
 }

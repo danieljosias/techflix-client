@@ -32,7 +32,7 @@ export const Delete = () => {
                 <Input value={email} onChange={(e) => setName(e.target.value)} color='white' bg='black' borderRadius='15px' variant='filled' placeholder='Name' />
 
                 <Flex mt='5'>
-                    <Button Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Deletar</Button>
+                    <Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Deletar</Button>
                 </Flex>
 
                 <Box display='flex' flexDirection='column' gap='2' mt='5' justifyContent='space-between'>

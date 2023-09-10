@@ -37,7 +37,7 @@ export const Alter = () => {
                 <Input type='password' value={password} onChange={(e) => setPassword(e.target.value)} color='white' bg='black' borderRadius='15px' mb='3'variant='filled' placeholder='Password' />
 
                 <Flex mt='5'>
-                    <Button Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Alterar</Button>
+                    <Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Alterar</Button>
                 </Flex>
 
                 <Box display='flex' flexDirection='column' gap='2' mt='5' justifyContent='space-between'>
