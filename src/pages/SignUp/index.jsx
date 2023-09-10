@@ -1,4 +1,5 @@
- import { useState } from "react"
+ import { useContext, useState } from "react"
+ import { useHistory } from 'react-router-dom'
 import { Heading, VStack } from "@chakra-ui/layout"
 import {
     FormControl,
@@ -8,26 +9,44 @@ import {
     Link,
     Text,
     Box,
-    Flex
+    Flex,
+    useToast,
 } from '@chakra-ui/react'
+import { ApiContext } from '../../providers/api'
 
 export const SignUp = () => {
+    const history = useHistory()
+
+    const toast = useToast()    
+
+    const { createUsers } = useContext(ApiContext)
+
     const [name,setName] = useState('')
-    const [avatar,setAvatar] = useState('')
     const [email,setEmail] = useState('')
+    const [avatar,setAvatar] = useState('')
     const [password,setPassword] = useState('')
     
-    const data = [
-        {
-            name: name,
-            avatar: avatar,
+    const data = {
+        'user':{
+            username: name,
             email: email,
+            avatar: avatar,
             password: password
         }
-    ]
+    }
 
-    const handleData = () => {
-        console.log(data)
+    const handleData = async () => {
+        if(name === ''){
+            toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
+            
+        }
+        const res = await createUsers(data)
+        if(res.name !== 'AxiosError'){
+            toast({title: 'Usuário criado', status: 'success', duration: 4000})
+            history.push('/signin')
+        }else{
+            toast({description: 'Dados inválidos', status: 'error', duration: 4000})
+        }
     }
 
     return(
@@ -47,7 +66,7 @@ export const SignUp = () => {
                 <Input type='password' value={password} onChange={(e) => setPassword(e.target.value)} color='white' bg='black' borderRadius='15px' mb='3'variant='filled' placeholder='Password' />
 
                 <Flex mt='5'>
-                    <Button Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Cadastrar</Button>
+                    <Button type='submit' onClick={()=>handleData()} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' >Cadastrar</Button>
                 </Flex>
 
                 <Box display='flex' gap='2' mt='5' justifyContent='space-between'>
