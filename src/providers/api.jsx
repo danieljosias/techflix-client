@@ -1,16 +1,19 @@
 import { createContext } from 'react'
 import { api } from '../services/services'
 export const ApiContext = createContext([])
+import { useToast } from '@chakra-ui/toast'
 
 export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
+
+    const toast = useToast()
 
     async function createUsers(data){
         try {
             const res = await api.post('/clients/', data)
             return res
         } catch (error) {
-            return error
+           return error
         }
     }
 

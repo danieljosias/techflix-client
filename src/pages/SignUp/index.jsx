@@ -1,5 +1,5 @@
- import { useContext, useState } from "react"
- import { useHistory } from 'react-router-dom'
+import { useContext, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import { Heading, VStack } from "@chakra-ui/layout"
 import {
     FormControl,
@@ -36,16 +36,14 @@ export const SignUp = () => {
     }
 
     const handleData = async () => {
-        if(name === ''){
+        if(name === '' || email === '' || avatar === ''|| password === ''){
             toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
-            
         }
+        
         const res = await createUsers(data)
         if(res.name !== 'AxiosError'){
-            toast({title: 'Usuário criado', status: 'success', duration: 4000})
+            toast({title: 'Conta criada!', status: 'success', duration: 4000})
             history.push('/signin')
-        }else{
-            toast({description: 'Dados inválidos', status: 'error', duration: 4000})
         }
     }
 
