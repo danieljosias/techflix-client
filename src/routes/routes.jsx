@@ -20,7 +20,7 @@ export const Router = () => {
       <Route exact path='/alter-password'>
         <Alter/>
       </Route>
-      <Route exact path='/delete'>
+      <Route exact path='/delete-account'>
         <Delete/>
       </Route>
       <Route exact path='/homepage'> 

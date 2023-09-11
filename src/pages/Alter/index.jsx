@@ -15,12 +15,12 @@ export const Alter = () => {
     const [email,setName] = useState('')
     const [password,setPassword] = useState('')
     
-    const data = [
-        {
+    const data = {
+        'user':{
             email: email,
             password: password
         }
-    ]
+    }
 
     const handleData = () => {
         console.log(data)
