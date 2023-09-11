@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import { Heading, VStack } from "@chakra-ui/layout"
 import {
     FormControl,
@@ -8,22 +9,37 @@ import {
     Link,
     Text,
     Box,
-    Flex
+    Flex,
+    useToast
 } from '@chakra-ui/react'
+import { ApiContext } from "../../providers/api"
 
 export const SignIn = () => {
+    const { login } = useContext(ApiContext)
+
     const [name,setName] = useState('')
     const [password,setPassword] = useState('')
     
-    const data = [
-        {
-            name: name,
-            password: password
-        }
-    ]
+    const toast = useToast()
 
-    const handleData = () => {
-        console.log(data)
+    const history = useHistory()
+    
+    const data = {
+        username: name,
+        password: password
+    }
+    
+    const handleData = async () => {
+        if(name === '' || password === ''){
+            toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
+        }
+        
+        const res = await login(data)
+    
+        if(res.name !== 'AxiosError'){
+            toast({title: 'Usuário logado!', status: 'success', duration: 4000})
+            history.push('/homepage')
+        }
     }
 
     return(
@@ -42,7 +58,7 @@ export const SignIn = () => {
 
                 <Box display='flex' flexDirection='column' gap='2' mt='5' justifyContent='space-between'>
                     <Text fontSize='sm' fontWeight='medium'>Já possui conta? <Link href='/signup' fontSize='md' fontWeight='medium' color='black'>Cadastre-se</Link></Text> 
-                    <Link href='/alter' fontSize='md' fontWeight='medium' color='black'>Esqueceu a senha?</Link>
+                    <Link href='/alter-password' fontSize='md' fontWeight='medium' color='black'>Esqueceu a senha?</Link>
                 </Box>
             </FormControl>
         </VStack>
