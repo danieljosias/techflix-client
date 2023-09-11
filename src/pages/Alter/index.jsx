@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Heading, VStack } from "@chakra-ui/layout"
 import {
     FormControl,
@@ -8,21 +8,26 @@ import {
     Link,
     Text,
     Box,
-    Flex
+    Flex,
+    useToast
 } from '@chakra-ui/react'
+import { ApiContext } from "../../providers/api"
 
 export const Alter = () => {
+    const { updateUsers } = useContext(ApiContext)
+
     const [email,setName] = useState('')
     const [password,setPassword] = useState('')
     
     const data = {
         'user':{
             email: email,
-            password: password
+            password: password,
+            user_id: ''
         }
     }
 
-    const handleData = () => {
+    const handleData = (client_id) => {
         console.log(data)
     }
 

@@ -17,6 +17,15 @@ export const ApiProvider = ({children}) => {
         }
     }
 
+    async function updateUsers(data){
+        try {
+            const res = await api.patch('/clients/', data)
+            return res
+        } catch (error) {
+           return error
+        }
+    }
+
     async function login(data){
         try {
             const res = await api.post('/login/', data)
@@ -100,7 +109,7 @@ export const ApiProvider = ({children}) => {
 
     return(
         <ApiContext.Provider 
-            value={{createUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
+            value={{createUsers, updateUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
         >
             {children}
         </ApiContext.Provider>
