@@ -17,9 +17,9 @@ export const ApiProvider = ({children}) => {
         }
     }
 
-    async function updateUsers(data){
+    async function updateUsers(data, client_id){
         try {
-            const res = await api.patch('/clients/', data)
+            const res = await api.patch(`/clients/${client_id}/`, data)
             return res
         } catch (error) {
            return error
