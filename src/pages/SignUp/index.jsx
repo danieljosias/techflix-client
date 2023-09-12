@@ -27,7 +27,7 @@ export const SignUp = () => {
     const [password,setPassword] = useState('')
     
     const data = {
-        'user':{
+        "user" : {
             username: name,
             email: email,
             avatar: avatar,
@@ -41,6 +41,7 @@ export const SignUp = () => {
         }
         
         const res = await createUsers(data)
+
         if(res.name !== 'AxiosError'){
             toast({title: 'Conta criada!', status: 'success', duration: 4000})
             history.push('/signin')
