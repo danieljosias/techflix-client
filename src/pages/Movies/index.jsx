@@ -4,8 +4,12 @@ import { Comments } from '../../components/Comments'
 import { movies } from '../../mocks/movies'
 import { Box, Button, Flex, Heading, Text, Image, Input } from '@chakra-ui/react'
 import { comments } from '../../mocks'
+import { useContext } from 'react'
+import { ApiContext } from '../../providers/api'
 
 export const Movies = () => {
+    const { filteredMovie } = useContext(ApiContext)
+
     return(
         <Box bg='black'>
             <Header/>
