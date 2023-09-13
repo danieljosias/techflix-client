@@ -1,12 +1,9 @@
 import { createContext } from 'react'
 import { api } from '../services/services'
 export const ApiContext = createContext([])
-import { useToast } from '@chakra-ui/toast'
 
 export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
-
-    const toast = useToast()
 
     async function createUsers(data){
         try {
@@ -16,6 +13,25 @@ export const ApiProvider = ({children}) => {
            return error
         }
     }
+
+    async function retrieveUsers(client_id){
+        try {
+            const res = await api.get(`/clients/${client_id}/`)
+            return res
+        } catch (error) {
+           return error
+        }
+    }
+
+    async function deleteUsers(client_id){
+        try {
+            const res = await api.delete(`/clients/${client_id}/`)
+            return res
+        } catch (error) {
+           return error
+        }
+    }
+
 
     async function updateUsers(data, client_id){
         try {
@@ -109,7 +125,7 @@ export const ApiProvider = ({children}) => {
 
     return(
         <ApiContext.Provider 
-            value={{createUsers, updateUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
+            value={{createUsers, updateUsers, retrieveUsers, deleteUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
         >
             {children}
         </ApiContext.Provider>

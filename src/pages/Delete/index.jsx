@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState, useContext  } from "react"
 import { Heading, VStack } from "@chakra-ui/layout"
+import { useHistory } from 'react-router-dom'
 import {
     FormControl,
     FormLabel,
@@ -8,20 +9,35 @@ import {
     Link,
     Text,
     Box,
-    Flex
+    Flex,
+    useToast,
 } from '@chakra-ui/react'
+import { ApiContext } from '../../providers/api'
 
 export const Delete = () => {
-    const [email,setName] = useState('')
-    
-    const data = [
-        {
-            email: email,
-        }
-    ]
+    const history = useHistory()
 
-    const handleData = () => {
-        console.log(data)
+    const toast = useToast()    
+
+    const { retrieveUsers, deleteUsers } = useContext(ApiContext)
+
+    const [email,setEmail] = useState('')
+
+    const client_id = localStorage.getItem('client_id')
+
+    const handleData = async () => {
+        if(email === ''){
+            toast({'description':'Campo obrigatório', status: 'error', duration: 4000})
+        }
+       
+        const res = await retrieveUsers(client_id)
+        if(res.data.user.email === email){
+            const res = await deleteUsers(client_id)
+                if(res.name !== 'AxiosError'){
+                toast({'description':'Conta deletada!', status: 'success', duration: 4000})
+                history.push('/signin') 
+            }
+        }
     }
 
     return(
@@ -29,7 +45,7 @@ export const Delete = () => {
             <Heading mb='5'>Deletar Conta</Heading>
             <FormControl isRequired borderRadius='0px 10px 0px 10px' bg='#D9D9D9' p='25'>
                 <FormLabel mt='10'>Email</FormLabel>
-                <Input value={email} onChange={(e) => setName(e.target.value)} color='white' bg='black' borderRadius='15px' variant='filled' placeholder='Name' />
+                <Input value={email} onChange={(e) => setEmail(e.target.value)} color='white' bg='black' borderRadius='15px' variant='filled' placeholder='Name' />
 
                 <Flex mt='5'>
                     <Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Deletar</Button>
