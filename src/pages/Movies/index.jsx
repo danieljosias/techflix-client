@@ -1,7 +1,6 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
-import { movies } from '../../mocks/movies'
 import { Box, Button, Flex, Heading, Text, Input } from '@chakra-ui/react'
 import { comments } from '../../mocks'
 import { useContext } from 'react'
