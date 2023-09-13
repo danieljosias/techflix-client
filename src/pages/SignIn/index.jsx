@@ -15,8 +15,9 @@ import {
 import { ApiContext } from "../../providers/api"
 
 export const SignIn = () => {
-    const { login } = useContext(ApiContext)
+    const { login, listMovies, setMovies } = useContext(ApiContext)
 
+    
     const [name,setName] = useState('')
     const [password,setPassword] = useState('')
     
@@ -29,6 +30,7 @@ export const SignIn = () => {
         password: password
     }
     
+
     const handleData = async () => {
         if(name === '' || password === ''){
             toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
@@ -39,6 +41,8 @@ export const SignIn = () => {
         if(res.name !== 'AxiosError'){
             toast({title: 'Usuário logado!', status: 'success', duration: 4000})
             history.push('/homepage')
+            const res = await listMovies()
+            setMovies([res])
         }
     }
 
