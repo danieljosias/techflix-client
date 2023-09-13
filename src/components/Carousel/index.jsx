@@ -10,16 +10,15 @@ import { useHistory } from 'react-router-dom'
 export const Carousel = () => {
     const history = useHistory()
     
-    const { movies, setFilteredMovie, filteredMovie } = useContext(ApiContext)
+    const { movies, setFilteredMovie } = useContext(ApiContext)
 
-    const [ data ] = movies
 
-    const action_movies = data.data.filter((movies) => movies.category === 'Ação')
+    const action_movies = movies.filter((movies) => movies.category === 'Ação')
 
-    const romance_movies = data.data.filter((movies => movies.category === 'Romance'))
+    const romance_movies = movies.filter((movies => movies.category === 'Romance'))
 
     const takeToFilm = async (movie_id) => {
-        const res = data.data.filter((movie) => movie.id === movie_id)
+        const res = movies.filter((movie) => movie.id === movie_id)
         setFilteredMovie(res)
         history.push('/movies') 
     }

@@ -4,7 +4,7 @@ export const ApiContext = createContext([])
 
 export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
-    const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState()
     const [filteredMovie, setFilteredMovie] = useState()
 
     async function createUsers(data){

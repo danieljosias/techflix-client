@@ -15,7 +15,7 @@ import {
 import { ApiContext } from "../../providers/api"
 
 export const SignIn = () => {
-    const { login, listMovies, setMovies } = useContext(ApiContext)
+    const { login, listMovies, setMovies, movies } = useContext(ApiContext)
 
     
     const [name,setName] = useState('')
@@ -42,7 +42,8 @@ export const SignIn = () => {
             toast({title: 'Usuário logado!', status: 'success', duration: 4000})
             history.push('/homepage')
             const res = await listMovies()
-            setMovies([res])
+            const { data } = res
+            setMovies(data)
         }
     }
 
