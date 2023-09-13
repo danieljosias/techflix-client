@@ -2,15 +2,20 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
 import { movies } from '../../mocks/movies'
-import { Box, Button, Flex, Heading, Text, Image, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text, Input } from '@chakra-ui/react'
 import { comments } from '../../mocks'
+import { useContext } from 'react'
+import { ApiContext } from '../../providers/api'
+
 
 export const Movies = () => {
+    const { filteredMovie } = useContext(ApiContext)
+
     return(
         <Box bg='black'>
-            <Header/>
-            {movies.map((movies)=>{
-                return  <Flex flexDirection='column' gap='10' m='10' p='10' backgroundSize='100% 100%' backgroundRepeat='no-repeat' backgroundImage='https://ottvsimg.ottvs.com.br/ban/prg.201818/looke_4001.jpg?165573093'>
+            <Header/> 
+            {filteredMovie.map((movies)=>{
+                return  <Flex key={movies.id} flexDirection='column' gap='10'  p='10' backgroundSize='100% 100%' backgroundRepeat='no-repeat' backgroundImage={movies.background}> 
                 <Box>
                     <Heading as='h2' color='white'>{movies.title}</Heading>
                     <Text color='white'>{movies.category}, {movies.classification}</Text>
@@ -24,14 +29,14 @@ export const Movies = () => {
                 </Box>
                 <Box>
                     <Heading as='h2' color='white'>Diretores</Heading>
-                    <Text color='white'>{movies.director}</Text>
+                    <Text color='white'>{movies.directors}</Text>
                 </Box>
 
                 <Box>
                     <Button border='none' w='150px' p='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Assistir</Button>
                 </Box>
             </Flex>
-            })}   
+            })}
             
             <Flex bg ='black' flexDirection='column' justifyContent='center' alignItems='center' p='10' m='10'>
                 <Heading as='h2' color='white' fontWeight='bold' p='10'>Comentários</Heading>
