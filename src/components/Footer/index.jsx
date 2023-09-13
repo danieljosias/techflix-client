@@ -4,7 +4,7 @@ import { FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa'
 
 export const Footer = () => {
     return(
-        <Flex bg='#D9D9D9' justifyContent='center' alignItems='center' textAlign='center' h='250px'>
+        <Flex bg='#D9D9D9' justifyContent='center' alignItems='center' textAlign='center' h='250px' mt='25'>
             <Box> 
                 <Heading as='h2' mb='10'>Redes Sociais</Heading>
                 <Flex gap='10'>
