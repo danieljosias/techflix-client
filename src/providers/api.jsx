@@ -1,9 +1,10 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import { api } from '../services/services'
 export const ApiContext = createContext([])
 
 export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
+    const [movies, setMovies] = useState([])
 
     async function createUsers(data){
         try {
@@ -125,7 +126,7 @@ export const ApiProvider = ({children}) => {
 
     return(
         <ApiContext.Provider 
-            value={{createUsers, updateUsers, retrieveUsers, deleteUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments}}
+            value={{createUsers, updateUsers, retrieveUsers, deleteUsers, login, createMovies, listMovies, updateMovies, deleteMovies, createComments, listComments, updateComments, deleteComments, movies, setMovies}}
         >
             {children}
         </ApiContext.Provider>
