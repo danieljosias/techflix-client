@@ -2,3 +2,20 @@
     margin: 0;
     padding: 0;
 }
+
+.slick-dots{
+    margin-bottom: 20px;
+}
+
+.slick-dots li.slick-active button:before{
+    color: white;
+}
+
+.slick-dots li button:before {
+    background: rgb(184, 60, 204);
+    color: black;
+}
+
+.slick-dots li button{
+    background: transparent;
+}
