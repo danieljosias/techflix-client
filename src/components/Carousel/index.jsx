@@ -1,4 +1,4 @@
-import { Box, Heading, Image } from '@chakra-ui/react'
+import { Box, Heading, Image, Flex } from '@chakra-ui/react'
 import Slider from 'react-slick'
 import { settings } from './styles'
 import { movies } from '../../mocks'
@@ -10,20 +10,21 @@ export const Carousel = () => {
     const romance_movies = movies.filter((movies => movies.category === 'romance'))
     
     return(
-        <Box bg='black' p='30'>
-            <Heading as='h2' color='white' mb='5'>Ação</Heading>
+        <Flex flexDirection='column' gap='10' bg='black' p='10px 30px' >
+            <Heading as='h2' color='white'>Ação</Heading>
             <Slider {...settings}>
                 {action_movies.map((movie => {
                     return <Box key={movie.id} cursor='pointer'><Image src={movie.url} alt='thumbnail' w='150px'/></Box>
                 }))}
                 
             </Slider>
-            <Heading as='h2' color='white' mb='5'>Romance</Heading>
+           
+            <Heading as='h2' color='white'>Romance</Heading>
             <Slider {...settings}>
                 {romance_movies.map((movie => {
                     return <Box key={movie.id} cursor='pointer'><Image src={movie.url} alt='thumbnail' w='150px'/></Box>
                 }))}  
             </Slider>
-        </Box>
+        </Flex>
     )
 }
