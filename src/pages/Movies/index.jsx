@@ -44,7 +44,7 @@ export const Movies = () => {
                         <Input type='text' w='66%' bg='black' border='none' ml='10' p='10' color='white' />
                         <Button border='none' p='10' ml='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
                         {comments.map((data)=>{
-                            return <Comments data={data}/>
+                            return <Comments key={data.id} data={data}/>
                         })}   
                    </Box>
                 </Flex>
