@@ -6,11 +6,9 @@ import { useState, useContext } from 'react'
 import { ApiContext } from '../../providers/api'
 
 export const Header = () => {
-    const { movies } = useContext(ApiContext)
+    const { movies, setFoundFilm } = useContext(ApiContext)
 
     const [film, setFilm] = useState('')
-    
-    const toast = useToast()
     
     const history = useHistory()
 
@@ -24,6 +22,7 @@ export const Header = () => {
             history.push('/not-found')
         }else{
             history.push('/search')
+            setFoundFilm(found_film)
         }  
     }
     return(
