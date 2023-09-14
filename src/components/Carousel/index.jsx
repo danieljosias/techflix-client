@@ -12,7 +12,6 @@ export const Carousel = () => {
     
     const { movies, setFilteredMovie } = useContext(ApiContext)
 
-
     const action_movies = movies.filter((movies) => movies.category === 'Ação')
 
     const romance_movies = movies.filter((movies => movies.category === 'Romance'))
