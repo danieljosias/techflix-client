@@ -7,6 +7,7 @@ import { Homepage } from '../pages/Homepage'
 import { Movies } from '../pages/Movies'
 import { Watch } from '../pages/Watch'
 import { Search } from '../pages/Search'
+import { NotFound } from '../pages/NotFound'
 
 export const Router = () => {
   return (
@@ -34,6 +35,9 @@ export const Router = () => {
       </Route>
       <Route exact path='/search'>
         <Search/>
+      </Route>
+      <Route exact path='/not-found'>
+        <NotFound/>
       </Route>
     </Switch>
   );

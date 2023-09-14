@@ -6,6 +6,7 @@ export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
     const [movies, setMovies] = useState()
     const [filteredMovie, setFilteredMovie] = useState()
+    const [foundFilm, setFoundFilm] = useState()
 
     async function createUsers(data){
         try {
@@ -143,7 +144,9 @@ export const ApiProvider = ({children}) => {
             movies,
             setMovies,
             filteredMovie,
-            setFilteredMovie
+            setFilteredMovie,
+            foundFilm,
+            setFoundFilm
         }}
         >
             {children}

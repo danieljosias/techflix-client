@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Box, Heading, Image, Flex, Button } from '@chakra-ui/react'
 import Slider from 'react-slick'
 import { settings } from './styles'
@@ -21,6 +21,10 @@ export const Carousel = () => {
         setFilteredMovie(res)
         history.push('/movies') 
     }
+
+    useEffect(()=>{
+        movies
+    },[])
     
     return(
         <Flex flexDirection='column' gap='10' bg='black' p='10px 30px' >
