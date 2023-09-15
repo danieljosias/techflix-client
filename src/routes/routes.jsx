@@ -8,6 +8,7 @@ import { Movies } from '../pages/Movies'
 import { Watch } from '../pages/Watch'
 import { Search } from '../pages/Search'
 import { NotFound } from '../pages/NotFound'
+import { Film } from '../pages/Film'
 
 export const Router = () => {
   return (
@@ -38,6 +39,9 @@ export const Router = () => {
       </Route>
       <Route exact path='/not-found'>
         <NotFound/>
+      </Route>
+      <Route exact path='/film'>
+        <Film/>
       </Route>
     </Switch>
   );
