@@ -5,10 +5,15 @@ import { Box, Button, Flex, Heading, Text, Input } from '@chakra-ui/react'
 import { comments } from '../../mocks'
 import { useContext } from 'react'
 import { ApiContext } from '../../providers/api'
-
+import { useHistory } from 'react-router-dom'
 
 export const Movies = () => {
     const { filteredMovie } = useContext(ApiContext)
+    const history = useHistory()
+
+    const takeToWatchFilm = () => {
+        history.push('/film') 
+    }
 
     return(
         <Box bg='black'>
@@ -32,7 +37,7 @@ export const Movies = () => {
                 </Box>
 
                 <Box>
-                    <Button border='none' w='150px' p='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Assistir</Button>
+                    <Button onClick={()=>takeToWatchFilm()} border='none' w='150px' p='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Assistir</Button>
                 </Box>
             </Flex>
             })}

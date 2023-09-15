@@ -16,7 +16,6 @@ import { ApiContext } from "../../providers/api"
 
 export const SignIn = () => {
     const { login, listMovies, setMovies } = useContext(ApiContext)
-
     
     const [name,setName] = useState('')
     const [password,setPassword] = useState('')
