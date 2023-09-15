@@ -12,7 +12,7 @@ import { NotFound } from '../pages/NotFound'
 export const Router = () => {
   return (
     <Switch>
-      <Route exact path='/signup'>
+      <Route exact path='/'>
         <SignUp/>
       </Route>
       <Route exact path='/signin'>

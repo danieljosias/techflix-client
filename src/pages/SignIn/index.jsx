@@ -62,7 +62,7 @@ export const SignIn = () => {
                 </Flex>
 
                 <Box display='flex' flexDirection='column' gap='2' mt='5' justifyContent='space-between'>
-                    <Text fontSize='sm' fontWeight='medium'>Já possui conta? <Link href='/signup' fontSize='md' fontWeight='medium' color='black'>Cadastre-se</Link></Text> 
+                    <Text fontSize='sm' fontWeight='medium'>Já possui conta? <Link href='/' fontSize='md' fontWeight='medium' color='black'>Cadastre-se</Link></Text> 
                     <Link href='/alter-password' fontSize='md' fontWeight='medium' color='black'>Esqueceu a senha?</Link>
                 </Box>
             </FormControl>
