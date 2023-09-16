@@ -1,24 +1,47 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
-import { Box, Button, Flex, Heading, Text, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text, Input, useToast } from '@chakra-ui/react'
 import { comments } from '../../mocks'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { ApiContext } from '../../providers/api'
 import { useHistory } from 'react-router-dom'
 
 export const Movies = () => {
-    const { filteredMovie } = useContext(ApiContext)
+    const { filteredMovie, createComments, listComments, setComments, comments } = useContext(ApiContext)
+    
     const history = useHistory()
 
     const takeToWatchFilm = () => {
         history.push('/film') 
     }
 
+    const [content, setContent] = useState('')
+
+    const toast = useToast()
+
+    const data = {
+        content: content,
+        user_id: filteredMovie[0]?.user?.id,
+        movie_id: filteredMovie[0]?.id,   
+    }
+
+    const handleComments = async () => {
+        if(content === ''){
+            toast({'description':'Campo obrigatório', 'status':'error', 'duration': 4000})
+        }
+        const res = await createComments(data)
+        if(res.name !== 'AxiosError'){
+            toast({'description':'Comentário criado!', 'status':'success', 'duration': 4000}) 
+            console.log(res)
+            //setComments(res)
+        }   
+    }
+
     return(
         <Box bg='black'>
             <Header/> 
-            {filteredMovie.map((movies)=>{
+            {filteredMovie?.map((movies)=>{
                 return  <Flex key={movies.id} flexDirection='column' gap='10'  p='10' backgroundSize='100% 100%' backgroundRepeat='no-repeat' backgroundImage={movies.background}> 
                 <Box>
                     <Heading as='h2' color='white'>{movies.title}</Heading>
@@ -46,9 +69,10 @@ export const Movies = () => {
                 <Heading as='h2' color='white' fontWeight='bold' p='10'>Comentários</Heading>
                 <Flex bg='#D9D9D9' h='300px' w='100%' p='10px' borderRadius='15px' justifyContent='center' alignItems='center'>
                    <Box>
-                        <Input type='text' w='66%' bg='black' border='none' ml='10' p='10' color='white' />
-                        <Button border='none' p='10' ml='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
-                        {comments.map((data)=>{
+                        <Input type='text' value={content} onChange={(e)=> setContent(e.target.value)} w='66%' bg='black' border='none' ml='10' p='10' color='white' />
+                        <Button onClick={()=>handleComments()} type='submit' border='none' p='10' ml='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
+                        
+                        {comments?.map((data)=>{
                             return <Comments key={data.id} data={data}/>
                         })}   
                    </Box>

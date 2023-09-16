@@ -4,9 +4,11 @@ export const ApiContext = createContext([])
 
 export const ApiProvider = ({children}) => {
     let token = localStorage?.getItem('token')
+
     const [movies, setMovies] = useState()
     const [filteredMovie, setFilteredMovie] = useState()
     const [foundFilm, setFoundFilm] = useState()
+    const [comments, setComments] = useState()
 
     async function createUsers(data){
         try {
@@ -54,15 +56,7 @@ export const ApiProvider = ({children}) => {
         }
     }
 
-    async function createMovies(data){
-        try {
-            const res = await api.post('/movies/', {data, token})
-            return res
-        } catch (error) {
-            return error
-        }
-    }
-
+   
     async function listMovies(){
         try {
             const res = await api.get('/movies/')
@@ -72,27 +66,13 @@ export const ApiProvider = ({children}) => {
         }
     }
 
-    async function updateMovies(data){
-        try {
-            const res = await api.patch('/movies/',{ data, token})
-            return res
-        } catch (error) {
-            return error
-        }
-    }
-
-    async function deleteMovies(){
-        try {
-            const res = await api.delete('/movies/',{token})
-            return res
-        } catch (error) {
-            return error
-        }
-    }
-
     async function createComments(data){
         try {
-            const res = await api.post('/comments/', {data, token})
+            const res = await api.post('/comments/', data,{
+                headers:{
+                    'Authorization': `token ${token}`
+                }
+            })
             return res
         } catch (error) {
             return error
@@ -133,10 +113,7 @@ export const ApiProvider = ({children}) => {
             retrieveUsers,
             deleteUsers,
             login,
-            createMovies,
             listMovies,
-            updateMovies,
-            deleteMovies,
             createComments,
             listComments,
             updateComments,
@@ -146,7 +123,9 @@ export const ApiProvider = ({children}) => {
             filteredMovie,
             setFilteredMovie,
             foundFilm,
-            setFoundFilm
+            setFoundFilm,
+            comments,
+            setComments
         }}
         >
             {children}

@@ -36,6 +36,7 @@ export const SignIn = () => {
         }
         
         const res = await login(data)
+        localStorage.setItem('token', res.data.token)
     
         if(res.name !== 'AxiosError'){
             toast({title: 'Usuário logado!', status: 'success', duration: 4000})

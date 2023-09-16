@@ -12,12 +12,12 @@ export const Carousel = () => {
     
     const { movies, setFilteredMovie } = useContext(ApiContext)
 
-    const action_movies = movies.filter((movies) => movies.category === 'Ação')
+    const action_movies = movies?.filter((movies) => movies.category === 'Ação')
 
-    const romance_movies = movies.filter((movies => movies.category === 'Romance'))
+    const romance_movies = movies?.filter((movies => movies.category === 'Romance'))
 
     const takeToFilm = async (movie_id) => {
-        const res = movies.filter((movie) => movie.id === movie_id)
+        const res = movies?.filter((movie) => movie.id === movie_id)
         setFilteredMovie(res)
         history.push('/movies') 
     }
@@ -30,7 +30,7 @@ export const Carousel = () => {
         <Flex flexDirection='column' gap='10' bg='black' p='10px 30px' >
             <Heading as='h2' color='white'>Ação</Heading>
             <Slider {...settings}>
-                {action_movies.map((movie => {
+                {action_movies?.map((movie => {
                     return <Box key={movie.id}><Button onClick={()=>takeToFilm(movie.id)} border='none'><Image cursor='pointer' src={movie.thumbnail} alt='thumbnail' w='150px'/></Button></Box>
                 }))}
                 
@@ -38,7 +38,7 @@ export const Carousel = () => {
            
             <Heading as='h2' color='white'>Romance</Heading>
             <Slider {...settings}>
-                {romance_movies.map((movie => {
+                {romance_movies?.map((movie => {
                     return <Box key={movie.id} cursor='pointer'><Button onClick={()=>takeToFilm(movie.id)} border='none'><Image src={movie.thumbnail} alt='thumbnail' w='150px'/></Button></Box>
                 }))}  
             </Slider>
