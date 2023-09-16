@@ -8,7 +8,7 @@ export const ApiProvider = ({children}) => {
     const [movies, setMovies] = useState()
     const [filteredMovie, setFilteredMovie] = useState()
     const [foundFilm, setFoundFilm] = useState()
-    const [comments, setComments] = useState()
+    const [comments, setComments] = useState([])
 
     async function createUsers(data){
         try {

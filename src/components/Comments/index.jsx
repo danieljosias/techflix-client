@@ -2,9 +2,9 @@ import { Flex ,Avatar, Text, Box, Icon } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
 
 
-export const Comments = ({data}) => {
+export const Comments = ({content}) => {
     return(
-        <Flex alignItems='center' h='50px' m='10' justifyContent='space-between' bg='white'p='5'>
+        <Flex alignItems='center' h='50px' m='10' justifyContent='space-between' bg='white'p='5' overflowY='scroll'>
            <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
                 <Text
@@ -14,7 +14,7 @@ export const Comments = ({data}) => {
                     overflow='hidden'
                     w='250px'
                     color='black'
-                > {data.comments} </Text>
+                > {content} </Text>
            </Flex>
            <Box>
                 <Icon as={DeleteIcon} mr='10' cursor='pointer'/>
