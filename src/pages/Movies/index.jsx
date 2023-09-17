@@ -1,7 +1,7 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
-import { Box, Button, Flex, Heading, Text, Input, useToast } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text, Input, useToast, Spacer } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import { ApiContext } from '../../providers/api'
 import { useHistory } from 'react-router-dom'
@@ -71,20 +71,33 @@ export const Movies = () => {
             </Flex>
             })}
             
-            <Flex bg ='black' flexDirection='column' justifyContent='center' alignItems='center' p='10' m='10'>
-                <Heading as='h2' color='white' fontWeight='bold' p='10'>Comentários</Heading>
-                <Flex bg='#D9D9D9' h='300px' w='100%' p='10px' borderRadius='15px' justifyContent='center' alignItems='center'>
-                   <Box >
-                        <Input type='text' value={content} onChange={(e)=> setContent(e.target.value)} w='66%' bg='black' border='none' ml='10' p='10' color='white' />
-                        <Button onClick={()=>handleComments()} type='submit' border='none' p='10' ml='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
+            <Flex bg ='black' flexDirection='column' justifyContent='center' gap='4' alignItems='center' p='10' m='10'>
+                <Heading as='h2' color='white' fontWeight='bold' >Comentários</Heading>
+                <Flex bg='#D9D9D9' w='100%' p='10px' borderRadius='15px' justifyContent='center' alignItems='center'>
+                   <Box>
+                        <Input type='text' value={content} placeholder='Faça seu comentário' onChange={(e)=> setContent(e.target.value)} w='200px' bg='black' h='35px' border='none' color='white' />
+                        <Button onClick={()=>handleComments()} type='submit' border='none' color='white' ml='5' fontSize='16px' w='110px' h='35px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
                         
-                        {comments?.map((comment,i)=>{
-                            return <Box key={i}>
-                            {comment.data?.map((item, j)=>{
-                                return <Comments key={j} content={item.content}/>
-                            })}
+                        <Flex justifyContent='center' alignItems='center'  mt='10'>
+                            {comments.length === 0 && 
+                            <Box>
+                                <Heading as='h2'>Nenhum comentário</Heading>
                             </Box>
-                        })}   
+                            }
+                            
+                            <Box overflowY='scroll' h='200px' p='5' >
+                                {comments?.map((comment,i)=>{
+                                        return <Box key={i}>
+                                        {comment.data?.map((item, j)=>{
+                                            return <Comments key={j} content={item.content}/>
+                                        })}
+                                        </Box>
+                                })}  
+
+                            </Box>
+
+                        </Flex>
+
                    </Box>
                 </Flex>
             </Flex>
