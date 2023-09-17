@@ -78,14 +78,14 @@ export const Movies = () => {
                         <Input type='text' value={content} placeholder='Faça seu comentário' onChange={(e)=> setContent(e.target.value)} w='200px' bg='black' h='35px' border='none' color='white' />
                         <Button onClick={()=>handleComments()} type='submit' border='none' color='white' ml='5' fontSize='16px' w='110px' h='35px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
                         
-                        <Flex justifyContent='center' alignItems='center'  mt='10'>
+                        <Flex justifyContent='center' alignItems='center'  mt='10' bg='#929292' overflowY='scroll'>
                             {comments.length === 0 && 
-                            <Box>
+                            <Box >
                                 <Heading as='h2'>Nenhum comentário</Heading>
                             </Box>
                             }
                             
-                            <Box overflowY='scroll' h='200px' p='5' >
+                            <Box h='200px' p='5'>
                                 {comments?.map((comment,i)=>{
                                         return <Box key={i}>
                                         {comment.data?.map((item, j)=>{
@@ -93,9 +93,7 @@ export const Movies = () => {
                                         })}
                                         </Box>
                                 })}  
-
                             </Box>
-
                         </Flex>
 
                    </Box>
