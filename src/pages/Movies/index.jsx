@@ -1,7 +1,7 @@
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Comments } from '../../components/Comments'
-import { Box, Button, Flex, Heading, Text, Input, useToast, Spacer } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text, Input, useToast } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import { ApiContext } from '../../providers/api'
 import { useHistory } from 'react-router-dom'
@@ -38,10 +38,6 @@ export const Movies = () => {
             toast({'description':'Comentário já existe!', 'status':'error', 'duration': 4000})
         }  
     }
-
-    useEffect(()=>{
-
-    },[comments])
     
     return(
         <Box bg='black'>
@@ -85,7 +81,7 @@ export const Movies = () => {
                             </Box>
                             }
                             
-                            {filteredMovie[0].id === comments[0].data[0].movie.id? 
+                            {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id? 
                             
                             <Box h='200px' p='5'>
                                 {comments?.map((comment,i) => {

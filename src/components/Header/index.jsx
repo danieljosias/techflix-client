@@ -12,13 +12,15 @@ export const Header = () => {
     
     const history = useHistory()
 
+    const toast = useToast()
+
     const logout = () => {
         history.push('/signin')
     }
 
     const searchFilm = () => {
         const found_film = movies.filter((movie) => movie.title === film)
-        if(found_film.length === 0){
+         if(found_film.length === 0){
             history.push('/not-found')
         }else{
             history.push('/search')

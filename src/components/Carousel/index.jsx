@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 export const Carousel = () => {
     const history = useHistory()
     
-    const { movies, setFilteredMovie, listComments, setComments } = useContext(ApiContext)
+    const { movies, setFilteredMovie, listComments, setComments, comments } = useContext(ApiContext)
 
     const action_movies = movies?.filter((movies) => movies.category === 'Ação')
 
@@ -25,7 +25,7 @@ export const Carousel = () => {
     }
 
     useEffect(()=>{
-        movies
+        movies 
     },[])
     
     return(
