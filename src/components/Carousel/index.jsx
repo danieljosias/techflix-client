@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 export const Carousel = () => {
     const history = useHistory()
     
-    const { movies, setFilteredMovie } = useContext(ApiContext)
+    const { movies, setFilteredMovie, listComments, setComments } = useContext(ApiContext)
 
     const action_movies = movies?.filter((movies) => movies.category === 'Ação')
 
@@ -20,6 +20,8 @@ export const Carousel = () => {
         const res = movies?.filter((movie) => movie.id === movie_id)
         setFilteredMovie(res)
         history.push('/movies') 
+        const list_comments = await listComments()
+        setComments([list_comments])
     }
 
     useEffect(()=>{

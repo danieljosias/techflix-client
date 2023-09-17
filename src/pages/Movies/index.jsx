@@ -7,7 +7,7 @@ import { ApiContext } from '../../providers/api'
 import { useHistory } from 'react-router-dom'
 
 export const Movies = () => {
-    const { filteredMovie, createComments, listComments, setComments, comments } = useContext(ApiContext)
+    const { filteredMovie, createComments, comments } = useContext(ApiContext)
     
     const history = useHistory()
 
@@ -32,9 +32,8 @@ export const Movies = () => {
        
         const res = await createComments(data)
         if(res.name !== 'AxiosError'){
-            toast({'description':'Comentário criado!', 'status':'success', 'duration': 4000}) 
-            const list_comments = await listComments()
-            setComments([list_comments]) 
+            toast({'description':'Obrigado pelo comentário!', 'status':'success', 'duration': 4000}) 
+
         }else if(res.response.data.content[0] === 'comments with this content already exists.'){
             toast({'description':'Comentário já existe!', 'status':'error', 'duration': 4000})
         }  
@@ -43,8 +42,6 @@ export const Movies = () => {
     useEffect(()=>{
 
     },[comments])
-
-    console.log(filteredMovie[0].id)
     
     return(
         <Box bg='black'>
