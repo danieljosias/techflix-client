@@ -78,23 +78,30 @@ export const Movies = () => {
                         <Button onClick={()=>handleComments()} type='submit' border='none' color='white' ml='5' fontSize='16px' w='110px' h='35px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
                         
                         <Flex justifyContent='center' h='250px' mt='10' w='315px' bg='#929292' overflowY='scroll'>
+                            
                             {comments.length === 0 && 
                             <Box >
                                 <Heading as='h2'>Nenhum comentário</Heading>
                             </Box>
                             }
                             
-                            <Box h='200px' p='5' >
-                                {comments?.map((comment,i)=>{
-                                        return <Box key={i} >
-                                        {comment.data?.map((item, j)=>{
-                                            return <Comments key={j} content={item.content}/>
-                                        })}
-                                        </Box>
+                            {filteredMovie[0].id === comments[0].data[0].movie.id? 
+                            
+                            <Box h='200px' p='5'>
+                                {comments?.map((comment,i) => {
+                                    return <Box key={i}>
+                                    {comment.data?.map((item, j) => {
+                                        return <Comments key={j} content={item.content}/>
+                                    })}
+                                    </Box>
                                 })}  
                             </Box>
+                            :
+                            <Box>
+                                <Heading as='h2'>Nenhum comentário</Heading>
+                            </Box>
+                        }
                         </Flex>
-
                    </Box>
                 </Flex>
             </Flex>

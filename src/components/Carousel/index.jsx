@@ -29,7 +29,7 @@ export const Carousel = () => {
     },[])
     
     return(
-        <Flex flexDirection='column' gap='10' bg='black' p='10px 30px' >
+        <Flex flexDirection='column' gap='10' bg='black' p='10px 30px'>
             <Heading as='h2' color='white'>Ação</Heading>
             <Slider {...settings}>
                 {action_movies?.map((movie => {
