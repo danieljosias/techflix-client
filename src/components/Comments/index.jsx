@@ -6,23 +6,17 @@ import { ApiContext, } from '../../providers/api'
 export const Comments = ({content, data}) => {
     const toast = useToast()
 
-    const { deleteComments, editComments, listComments, setComments, comments } = useContext(ApiContext)
+    const { deleteComments, editComments} = useContext(ApiContext)
     const comment_id = data.id
     
     const deleteComment = async () => {
         const res = await deleteComments(comment_id)
         if(res.name !== 'AxiosError'){
             toast({'description':'Comentário deletado!', 'status':'success', 'duration': 4000})
-            const list_comments = await listComments()
-            setComments([list_comments])
         }
     }
 
     const editComment = () => {}
-
-    useEffect(()=>{
-        
-    },[comments])
 
     return(
         <Box bg='white' p='5' mb='5' w='280px'>
