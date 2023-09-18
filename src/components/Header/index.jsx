@@ -40,7 +40,7 @@ export const Header = () => {
 
             <Flex gap='3' alignItems='center'>
                 <Text fontWeight='bold' fontSize='25px'>Sair</Text>
-                <Button cursor='pointer'onClick={()=>logout()} border='none' bg='transparent'>
+                <Button cursor='pointer'onClick={()=>logout()} border='none' bg='transparent' _hover={{color:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>
                     <RiLogoutBoxRFill size='25px'/>
                 </Button>
             </Flex>

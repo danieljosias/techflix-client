@@ -27,13 +27,13 @@ export const Movies = () => {
 
     const handleComments = async () => {
         if(content === ''){
-            toast({'description':'Campo obrigatório', 'status':'error', 'duration': 4000})
+            toast({'description':'Escreva seu comentário', 'status':'info', 'duration': 4000})
         }
        
         const res = await createComments(data)
         if(res.name !== 'AxiosError'){
             toast({'description':'Obrigado pelo comentário!', 'status':'success', 'duration': 4000}) 
-            
+            setContent('')
 
         }else if(res.response.data.content[0] === 'comments with this content already exists.'){
             toast({'description':'Comentário já existe!', 'status':'error', 'duration': 4000})

@@ -1,6 +1,6 @@
 import { Flex ,Avatar, Text, Box, Icon, Button, useToast } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { ApiContext, } from '../../providers/api'
 
 export const Comments = ({content, data}) => {
