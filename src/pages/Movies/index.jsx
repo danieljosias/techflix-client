@@ -7,7 +7,7 @@ import { ApiContext } from '../../providers/api'
 import { useHistory } from 'react-router-dom'
 
 export const Movies = () => {
-    const { filteredMovie, createComments, comments } = useContext(ApiContext)
+    const { filteredMovie, createComments, listComments, setComments ,comments } = useContext(ApiContext)
     
     const history = useHistory()
 
@@ -33,11 +33,20 @@ export const Movies = () => {
         const res = await createComments(data)
         if(res.name !== 'AxiosError'){
             toast({'description':'Obrigado pelo comentário!', 'status':'success', 'duration': 4000}) 
+            
 
         }else if(res.response.data.content[0] === 'comments with this content already exists.'){
             toast({'description':'Comentário já existe!', 'status':'error', 'duration': 4000})
         }  
     }
+
+    useEffect(() => {
+        async function getComments() {
+            const list_comments = await listComments()
+            setComments([list_comments])
+        }
+        getComments()
+    }, [filteredMovie, comments]);
     
     return(
         <Box bg='black'>
@@ -75,19 +84,13 @@ export const Movies = () => {
                         
                         <Flex justifyContent='center' h='250px' mt='10' w='315px' bg='#929292' overflowY='scroll'>
                             
-                            {comments.length === 0 && 
-                            <Box >
-                                <Heading as='h2'>Nenhum comentário</Heading>
-                            </Box>
-                            }
-                            
-                            {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id? 
+                            {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id?
                             
                             <Box h='200px' p='5'>
                                 {comments?.map((comment,i) => {
                                     return <Box key={i}>
                                     {comment.data?.map((item, j) => {
-                                        return <Comments key={j} content={item.content}/>
+                                        return <Comments key={j} content={item.content} data={item}/>
                                     })}
                                     </Box>
                                 })}  
@@ -96,7 +99,7 @@ export const Movies = () => {
                             <Box>
                                 <Heading as='h2'>Nenhum comentário</Heading>
                             </Box>
-                        }
+                            }
                         </Flex>
                    </Box>
                 </Flex>

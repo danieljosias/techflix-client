@@ -97,9 +97,9 @@ export const ApiProvider = ({children}) => {
         }
     }
 
-    async function deleteComments(){
+    async function deleteComments(comment_id){
         try {
-            const res = await api.delete('/comments/', {token})
+            const res = await api.delete(`/comments/${comment_id}/`, {token})
             return res
         } catch (error) {
             return error
