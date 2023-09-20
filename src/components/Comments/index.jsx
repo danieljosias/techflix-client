@@ -6,11 +6,19 @@ import  ModalUpdateComment  from '../Modal'
 
 export const Comments = ({content, item}) => {
     const [modal, setModal] = useState()
+    const [newContent, setNewContent] = useState('')
 
     const toast = useToast()
 
     const { deleteComments, updateComments} = useContext(ApiContext)
+
     const comment_id = item?.id
+
+    const data = {
+      content: newContent,
+      user_id: item?.user.id,
+  
+    }
 
     const closeModal = () => {
         setModal(false)
@@ -28,11 +36,12 @@ export const Comments = ({content, item}) => {
     }
 
     const updateComment = async () => {
+        openModal()
         if(content === ''){
             toast({'description':'Faça seu comentário!', 'status':'info', 'duration': 4000})
         }
+
         const res = await updateComments(comment_id, data)
-        console.log(res)
         if(res.name !== 'AxiosError'){
             toast({'description':'Comentário editado!', 'status':'success', 'duration': 4000})
         }

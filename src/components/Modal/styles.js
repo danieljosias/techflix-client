@@ -14,7 +14,7 @@ export const styles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        width: '400px',
+        width: '300px',
         height: '300px',
         borderRadius: '25px 25px 25px 0px'
       },
