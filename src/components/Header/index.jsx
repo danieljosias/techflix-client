@@ -14,6 +14,7 @@ export const Header = () => {
 
     const logout = () => {
         history.push('/signin')
+        localStorage.removeItem('token')
     }
 
     const searchFilm = () => {

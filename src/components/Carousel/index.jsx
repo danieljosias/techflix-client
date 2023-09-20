@@ -20,6 +20,10 @@ export const Carousel = () => {
         const res = movies?.filter((movie) => movie.id === movie_id)
         setFilteredMovie(res)
         history.push('/movies') 
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     }
 
     useEffect(()=>{

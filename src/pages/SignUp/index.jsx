@@ -41,8 +41,12 @@ export const SignUp = () => {
         }
         
         const res = await createUsers(data)
-
+        console.log(res)
+        
+        
         if(res.name !== 'AxiosError'){
+            localStorage.setItem('client_id', res.data.id)
+            localStorage.setItem('user_id', res.data.user.id)
             toast({title: 'Conta criada!', status: 'success', duration: 4000})
             history.push('/signin')
         }

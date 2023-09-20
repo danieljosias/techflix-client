@@ -31,19 +31,21 @@ export const SignIn = () => {
     
 
     const handleData = async () => {
+        const res = await login(data)
         if(name === '' || password === ''){
             toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
+            
+        }else if(res.name === 'AxiosError'){
+            toast({description: 'Nome ou senha inválidos!', status: 'error', duration: 4000})
         }
-        
-        const res = await login(data)
         localStorage.setItem('token', res.data.token)
-    
+        
         if(res.name !== 'AxiosError'){
             toast({title: 'Seja bem-vindo(a)!', status: 'success', duration: 4000})
-            history.push('/homepage')
             const res = await listMovies()
             const { data } = res
             setMovies(data)
+            history.push('/homepage')
         }
     }
 

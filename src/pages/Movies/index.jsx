@@ -19,9 +19,11 @@ export const Movies = () => {
 
     const toast = useToast()
 
+    const user_id = localStorage.getItem('user_id')
+
     const data = {
         content: content,
-        user_id: filteredMovie[0]?.user?.id,
+        user_id: user_id,
         movie_id: filteredMovie[0]?.id,   
     }
 
