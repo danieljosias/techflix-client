@@ -43,7 +43,7 @@ export const Comments = ({content, item}) => {
         if(res.name !== 'AxiosError'){
             toast({'description':'Comentário editado!', 'status':'success', 'duration': 4000})
             setNewContent('')
-            /* closeModal() */
+            closeModal()
         }
     }
 
@@ -52,6 +52,7 @@ export const Comments = ({content, item}) => {
             <ModalUpdateComment modal={modal} closeModal={closeModal} updateComment={updateComment}/>
            <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
+                {}
                 <Text
                     fontWeight='bold'
                     textOverflow='ellipsis'

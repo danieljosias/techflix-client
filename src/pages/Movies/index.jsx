@@ -41,15 +41,15 @@ export const Movies = () => {
     }
 
     useEffect(() => {
-        setTimeout(()=>{
-            async function getComments() {
-                const list_comments = await listComments()
-                setComments([list_comments])
-            }
-            getComments()
-        }, 5000)
-    }, [filteredMovie])
-    
+        /* async function getComments() {
+            const list_comments = await listComments()
+            setComments([list_comments])
+        }
+        getComments() */
+    }, [filteredMovie, ])
+
+    console.log(filteredMovie[0]?.id)
+    console.log(comments[0]?.data[0]?.movie.id)
     return(
         <Box bg='black'>
             <Header/> 
@@ -77,6 +77,7 @@ export const Movies = () => {
             </Flex>
             })}
             
+
             <Flex bg ='black' flexDirection='column' justifyContent='center' gap='4' alignItems='center' p='10' m='10'>
                 <Heading as='h2' color='white' fontWeight='bold' >Comentários</Heading>
                 <Flex bg='#D9D9D9' w='100%' p='10px' borderRadius='15px' justifyContent='center' alignItems='center'>
@@ -86,12 +87,13 @@ export const Movies = () => {
                         
                         <Flex justifyContent='center' h='250px' mt='10' w='315px' bg='#929292' overflowY='scroll'>
                             
-                            {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id?
+                            {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id ?
                             
                             <Box h='200px' p='5'>
                                 {comments?.map((comment,i) => {
                                     return <Box key={i}>
                                     {comment.data?.map((item, j) => {
+                                        console.log(item)
                                         return <Comments key={j} content={item.content} item={item} />
                                     })}
                                     </Box>

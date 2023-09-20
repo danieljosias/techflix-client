@@ -39,7 +39,7 @@ export const Carousel = () => {
             <Heading as='h2' color='white'>Romance</Heading>
             <Slider {...settings}>
                 {romance_movies?.map((movie => {
-                    return <Box key={movie.id} cursor='pointer'><Button onClick={()=>takeToFilm(movie.id)} border='none'><Image src={movie.thumbnail} alt='thumbnail' w='150px'/></Button></Box>
+                    return <Box key={movie.id} cursor='pointer'><Button onClick={()=>takeToFilm(movie.id)} border='none'><Image cursor='pointer' src={movie.thumbnail} alt='thumbnail' w='150px'/></Button></Box>
                 }))}  
             </Slider>
         </Flex>

@@ -19,13 +19,13 @@ const ModalUpdateComment = ({modal, closeModal, updateComment }) => {
         <Flex flexDirection='column' gap='20'>
             <Flex justifyContent='space-between'>
                 <Heading as='h2'></Heading>
-                <Button onClick={closeModal} border='none' bg='transparent' _hover={{color:'#B83CCC'}} cursor='pointer'><Icon as={CloseIcon}  /></Button>
+                <Button onClick={closeModal} border='none' bg='transparent' _hover={{color:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' cursor='pointer'><Icon as={CloseIcon}  /></Button>
             </Flex>
             
             <FormControl >
                 <FormLabel mb='4' fontWeight='bold'>Novo Comentário</FormLabel>
                 <Input placeholder='Digite seu comentário..' p='5'  value={newContent} onChange={(e) => setNewContent(e.target.value)} />
-                <Button /* onClick={()=>updateComment()} */ _hover={{bg:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' cursor='pointer' bg='#D9D9D9' ml='6' p='5' fontWeight='bold' border='none' variant='ghost'>Atualizar</Button>
+                <Button onClick={()=>updateComment()} cursor='pointer' bg='#B83CCC' ml='6' p='5' fontWeight='bold' color='white' border='none' variant='ghost'>Atualizar</Button>
             </FormControl>
         </Flex>
       </Modal>
