@@ -12,13 +12,15 @@ export const Header = () => {
     
     const history = useHistory()
 
+    const toast = useToast()
+
     const logout = () => {
         history.push('/signin')
     }
 
     const searchFilm = () => {
         const found_film = movies.filter((movie) => movie.title === film)
-        if(found_film.length === 0){
+         if(found_film.length === 0){
             history.push('/not-found')
         }else{
             history.push('/search')
@@ -33,12 +35,12 @@ export const Header = () => {
             
             <Flex gap='6'>
                 <Input hideBelow='375px' value={film} onChange={(e) => setFilm(e.target.value)} p='8' variant='filled' border='none' placeholder='Pesquise seu filme' bg='black' color='white'/>
-                <Button cursor='pointer' onClick={()=>searchFilm()} hideBelow='375px' border='none' bg='transparent' color='#B83CCC'><Icon as={SearchIcon} boxSize={20}/></Button>   
+                <Button cursor='pointer' onClick={()=>searchFilm()} hideBelow='375px' border='none' bg='transparent' _hover={{color:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'><Icon as={SearchIcon} boxSize={20}/></Button>   
             </Flex>
 
             <Flex gap='3' alignItems='center'>
                 <Text fontWeight='bold' fontSize='25px'>Sair</Text>
-                <Button cursor='pointer'onClick={()=>logout()} border='none' bg='transparent'>
+                <Button cursor='pointer'onClick={()=>logout()} border='none' bg='transparent' _hover={{color:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'>
                     <RiLogoutBoxRFill size='25px'/>
                 </Button>
             </Flex>

@@ -36,9 +36,10 @@ export const SignIn = () => {
         }
         
         const res = await login(data)
+        localStorage.setItem('token', res.data.token)
     
         if(res.name !== 'AxiosError'){
-            toast({title: 'Usuário logado!', status: 'success', duration: 4000})
+            toast({title: 'Seja bem-vindo(a)!', status: 'success', duration: 4000})
             history.push('/homepage')
             const res = await listMovies()
             const { data } = res

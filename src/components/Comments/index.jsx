@@ -1,12 +1,58 @@
-import { Flex ,Avatar, Text, Box, Icon } from '@chakra-ui/react'
+import { Flex ,Avatar, Text, Box, Icon, Button, useToast,}from '@chakra-ui/react'
 import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
+import { useContext, useState } from 'react'
+import { ApiContext, } from '../../providers/api'
+import  ModalUpdateComment  from '../Modal'
 
+export const Comments = ({content, item}) => {
+    const [modal, setModal] = useState()
 
-export const Comments = ({data}) => {
+    const toast = useToast()
+
+    const { deleteComments, updateComments, newContent, setNewContent} = useContext(ApiContext)
+
+    const comment_id = item?.id
+    const movie_id = item?.movie.id
+    const user_id = item?.user.id
+
+    const data = {
+      content: newContent,
+      user_id: user_id,
+      movie_id: movie_id  
+    }
+
+    const closeModal = () => {
+        setModal(false)
+    }
+
+    const openModal = () => {
+        setModal(true)
+    }
+
+    const deleteComment = async () => {
+        const res = await deleteComments(comment_id)
+        if(res.name !== 'AxiosError'){
+            toast({'description':'Comentário deletado!', 'status':'success', 'duration': 4000})
+        }
+    }
+
+    const updateComment = async () => {
+        openModal()
+        
+        const res = await updateComments(comment_id, data)
+        if(res.name !== 'AxiosError'){
+            toast({'description':'Comentário editado!', 'status':'success', 'duration': 4000})
+            setNewContent('')
+            closeModal()
+        }
+    }
+
     return(
-        <Flex alignItems='center' h='50px' m='10' justifyContent='space-between' bg='white'p='5'>
+        <Box bg='white' p='5' mb='5' w='280px'>
+            <ModalUpdateComment modal={modal} closeModal={closeModal} updateComment={updateComment}/>
            <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
+                {}
                 <Text
                     fontWeight='bold'
                     textOverflow='ellipsis'
@@ -14,12 +60,12 @@ export const Comments = ({data}) => {
                     overflow='hidden'
                     w='250px'
                     color='black'
-                > {data.comments} </Text>
+                > {content} </Text>
+                <Box>
+                    <Button border='none' bg='transparent' _hover={{color:'red'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' onClick={()=>deleteComment()}><Icon as={DeleteIcon} mr='10' cursor='pointer'/></Button>
+                    <Button border='none' bg='transparent' _hover={{color:'blue'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' onClick={()=>updateComment()}><Icon as={EditIcon}  cursor='pointer'/></Button>
+                </Box>
            </Flex>
-           <Box>
-                <Icon as={DeleteIcon} mr='10' cursor='pointer'/>
-                <Icon as={EditIcon}  cursor='pointer'/>
-           </Box>
-        </Flex>
+        </Box>
     )
 }
