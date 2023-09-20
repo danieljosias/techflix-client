@@ -88,9 +88,13 @@ export const ApiProvider = ({children}) => {
         }
     }
 
-    async function updateComments(data){
+    async function updateComments(comment_id, data){
         try {
-            const res = await api.patch('/comments/', {data, token})
+            const res = await api.patch(`/comments/${comment_id}/`, {data},{
+                headers:{
+                    'Authorization': `token ${token}`
+                }
+            })
             return res
         } catch (error) {
             return error

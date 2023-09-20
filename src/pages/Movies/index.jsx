@@ -90,7 +90,7 @@ export const Movies = () => {
                                 {comments?.map((comment,i) => {
                                     return <Box key={i}>
                                     {comment.data?.map((item, j) => {
-                                        return <Comments key={j} content={item.content} data={item}/>
+                                        return <Comments key={j} content={item.content} item={item} />
                                     })}
                                     </Box>
                                 })}  

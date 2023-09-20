@@ -35,7 +35,7 @@ export const Header = () => {
             
             <Flex gap='6'>
                 <Input hideBelow='375px' value={film} onChange={(e) => setFilm(e.target.value)} p='8' variant='filled' border='none' placeholder='Pesquise seu filme' bg='black' color='white'/>
-                <Button cursor='pointer' onClick={()=>searchFilm()} hideBelow='375px' border='none' bg='transparent' color='#B83CCC'><Icon as={SearchIcon} boxSize={20}/></Button>   
+                <Button cursor='pointer' onClick={()=>searchFilm()} hideBelow='375px' border='none' bg='transparent' _hover={{color:'#B83CCC'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)'><Icon as={SearchIcon} boxSize={20}/></Button>   
             </Flex>
 
             <Flex gap='3' alignItems='center'>
