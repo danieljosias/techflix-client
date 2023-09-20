@@ -18,7 +18,7 @@ export const Search = () => {
             <Header/>
             <Flex bg='black' p='10' h='60vh' gap='10' flexDirection='column' justifyContent='center' textAlign='center'>
                 <Heading as='h2' color='white'>Resultado de Busca</Heading>
-                <Flex border='white' justifyContent='center'>
+                <Flex border='white' justifyContent='center' >
                     <Button onClick={()=>takeToWatchFilm()} cursor='pointer' borderColor='white'><Image h='150px' src={foundFilm[0].thumbnail} title={foundFilm[0].title}/></Button>
                 </Flex>
             </Flex>

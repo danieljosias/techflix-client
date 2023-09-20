@@ -48,11 +48,10 @@ export const Comments = ({content, item}) => {
     }
 
     return(
-        <Box bg='white' p='5' mb='5' w='280px'>
+        <Box bg='white' p='5' mb='5' w='280px' borderRadius='5px'>
             <ModalUpdateComment modal={modal} closeModal={closeModal} updateComment={updateComment}/>
            <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
-                {}
                 <Text
                     fontWeight='bold'
                     textOverflow='ellipsis'

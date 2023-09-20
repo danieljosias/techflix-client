@@ -41,12 +41,12 @@ export const Movies = () => {
     }
 
     useEffect(() => {
-        /* async function getComments() {
+        async function getComments() {
             const list_comments = await listComments()
             setComments([list_comments])
         }
-        getComments() */
-    }, [filteredMovie, ])
+        getComments()
+    }, [filteredMovie, comments])
 
     return(
         <Box bg='black'>
@@ -70,7 +70,7 @@ export const Movies = () => {
                 </Box>
 
                 <Box>
-                    <Button onClick={()=>takeToWatchFilm()} border='none' w='150px' p='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Assistir</Button>
+                    <Button borderRadius='5px' onClick={()=>takeToWatchFilm()} border='none' w='150px' p='10' color='white' fontSize='16px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Assistir</Button>
                 </Box>
             </Flex>
             })}
@@ -80,18 +80,17 @@ export const Movies = () => {
                 <Heading as='h2' color='white' fontWeight='bold' >Comentários</Heading>
                 <Flex bg='#D9D9D9' w='100%' p='10px' borderRadius='15px' justifyContent='center' alignItems='center'>
                    <Box>
-                        <Input type='text' value={content} placeholder='Faça seu comentário' onChange={(e)=> setContent(e.target.value)} w='200px' bg='black' h='35px' border='none' color='white' />
-                        <Button onClick={()=>handleComments()} type='submit' border='none' color='white' ml='5' fontSize='16px' w='110px' h='35px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
+                        <Input type='text' value={content} borderRadius='5px' placeholder='Faça seu comentário' onChange={(e)=> setContent(e.target.value)} w='200px' bg='black' h='35px' border='none' color='white' />
+                        <Button onClick={()=>handleComments()} borderRadius='5px' type='submit' border='none' color='white' ml='5' fontSize='16px' w='110px' h='35px' fontWeight='bold' bg ='#B83CCC' cursor='pointer'>Enviar</Button>
                         
-                        <Flex justifyContent='center' h='250px' mt='10' w='315px' bg='#929292' overflowY='scroll'>
+                        <Flex className='comments'borderRadius='5px'   justifyContent='center' h='250px' mt='10' w='315px' bg='#929292' overflowY='scroll'>
                             
                             {filteredMovie[0]?.id === comments[0]?.data[0]?.movie.id ?
                             
-                            <Box h='200px' p='5'>
+                            <Box h='200px' p='5' >
                                 {comments?.map((comment,i) => {
                                     return <Box key={i}>
                                     {comment.data?.map((item, j) => {
-                                        console.log(item)
                                         return <Comments key={j} content={item.content} item={item} />
                                     })}
                                     </Box>
