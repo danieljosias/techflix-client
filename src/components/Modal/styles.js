@@ -15,7 +15,7 @@ export const styles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '300px',
-        height: '300px',
+        height: '150px',
         borderRadius: '25px 25px 25px 0px'
       },
     };
