@@ -48,8 +48,6 @@ export const Movies = () => {
         getComments() */
     }, [filteredMovie, ])
 
-    console.log(filteredMovie[0]?.id)
-    console.log(comments[0]?.data[0]?.movie.id)
     return(
         <Box bg='black'>
             <Header/> 
