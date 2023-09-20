@@ -6,18 +6,19 @@ import  ModalUpdateComment  from '../Modal'
 
 export const Comments = ({content, item}) => {
     const [modal, setModal] = useState()
-    const [newContent, setNewContent] = useState('')
 
     const toast = useToast()
 
-    const { deleteComments, updateComments} = useContext(ApiContext)
+    const { deleteComments, updateComments, newContent, setNewContent} = useContext(ApiContext)
 
     const comment_id = item?.id
+    const movie_id = item?.movie.id
+    const user_id = item?.user.id
 
     const data = {
       content: newContent,
-      user_id: item?.user.id,
-  
+      user_id: user_id,
+      movie_id: movie_id  
     }
 
     const closeModal = () => {
@@ -37,21 +38,19 @@ export const Comments = ({content, item}) => {
 
     const updateComment = async () => {
         openModal()
-        if(content === ''){
-            toast({'description':'Faça seu comentário!', 'status':'info', 'duration': 4000})
-        }
-
+        
         const res = await updateComments(comment_id, data)
         if(res.name !== 'AxiosError'){
             toast({'description':'Comentário editado!', 'status':'success', 'duration': 4000})
+            setNewContent('')
+            /* closeModal() */
         }
     }
 
-
     return(
         <Box bg='white' p='5' mb='5' w='280px'>
-            <ModalUpdateComment modal={modal} closeModal={closeModal} openModal={openModal} item={item}/>
-           <Flex alignItems='center' justifyContent='' gap='10' >
+            <ModalUpdateComment modal={modal} closeModal={closeModal} updateComment={updateComment}/>
+           <Flex alignItems='center' gap='10' >
                 <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
                 <Text
                     fontWeight='bold'

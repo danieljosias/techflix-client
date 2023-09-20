@@ -9,6 +9,7 @@ export const ApiProvider = ({children}) => {
     const [filteredMovie, setFilteredMovie] = useState()
     const [foundFilm, setFoundFilm] = useState()
     const [comments, setComments] = useState([])
+    const [newContent, setNewContent] = useState('')
 
     async function createUsers(data){
         try {
@@ -90,7 +91,7 @@ export const ApiProvider = ({children}) => {
 
     async function updateComments(comment_id, data){
         try {
-            const res = await api.patch(`/comments/${comment_id}/`, {data},{
+            const res = await api.patch(`/comments/${comment_id}/`, data,{
                 headers:{
                     'Authorization': `token ${token}`
                 }
@@ -129,7 +130,9 @@ export const ApiProvider = ({children}) => {
             foundFilm,
             setFoundFilm,
             comments,
-            setComments
+            setComments,
+            newContent,
+            setNewContent
         }}
         >
             {children}

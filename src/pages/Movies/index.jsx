@@ -41,12 +41,14 @@ export const Movies = () => {
     }
 
     useEffect(() => {
-        async function getComments() {
-            const list_comments = await listComments()
-            setComments([list_comments])
-        }
-        getComments()
-    }, [filteredMovie, comments]);
+        setTimeout(()=>{
+            async function getComments() {
+                const list_comments = await listComments()
+                setComments([list_comments])
+            }
+            getComments()
+        }, 5000)
+    }, [filteredMovie])
     
     return(
         <Box bg='black'>
