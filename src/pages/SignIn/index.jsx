@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
 import { Heading, VStack } from "@chakra-ui/layout"
 import {
@@ -15,7 +15,7 @@ import {
 import { ApiContext } from "../../providers/api"
 
 export const SignIn = () => {
-    const { login, listMovies, setMovies } = useContext(ApiContext)
+    const { login, listMovies, setMovies, listUsers, users } = useContext(ApiContext)
     
     const [name,setName] = useState('')
     const [password,setPassword] = useState('')
@@ -31,10 +31,11 @@ export const SignIn = () => {
     
 
     const handleData = async () => {
+        
         const res = await login(data)
         if(name === '' || password === ''){
             toast({description: 'Campos obrigatórios', status: 'error', duration: 4000})
-            
+
         }else if(res.name === 'AxiosError'){
             toast({description: 'Nome ou senha inválidos!', status: 'error', duration: 4000})
         }
@@ -48,7 +49,6 @@ export const SignIn = () => {
             history.push('/homepage')
         }
     }
-
     return(
         <VStack m='5' h='100vh' display='flex' flexDirection='column' alignItems='center' justifyContent='center' >
             <Heading mb='5'>Sign In</Heading>

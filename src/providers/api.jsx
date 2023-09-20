@@ -20,6 +20,15 @@ export const ApiProvider = ({children}) => {
         }
     }
 
+    async function listUsers(){
+        try {
+            const res = await api.get('/clients/')
+            return res
+        } catch (error) {
+           return error
+        }
+    }
+
     async function retrieveUsers(client_id){
         try {
             const res = await api.get(`/clients/${client_id}/`)
@@ -114,6 +123,7 @@ export const ApiProvider = ({children}) => {
     return(
         <ApiContext.Provider 
             value={{createUsers,
+            listUsers,
             updateUsers,
             retrieveUsers,
             deleteUsers,

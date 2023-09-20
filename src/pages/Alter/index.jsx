@@ -39,6 +39,7 @@ export const Alter = () => {
         }
        
         const res = await updateUsers(data, client_id)
+
         if(res.name !== 'AxiosError'){
             toast({'description':'Senha alterada!', status: 'success', duration: 4000})
             history.push('/signin') 
