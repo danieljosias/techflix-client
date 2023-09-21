@@ -1,4 +1,4 @@
-import { Flex ,Avatar, Text, Box, Icon, Button, useToast,}from '@chakra-ui/react'
+import { Flex ,Text, Box, Icon, Button, useToast,}from '@chakra-ui/react'
 import { DeleteIcon, EditIcon }  from '@chakra-ui/icons'
 import { useContext, useState } from 'react'
 import { ApiContext, } from '../../providers/api'
@@ -50,8 +50,8 @@ export const Comments = ({content, item}) => {
     return(
         <Box bg='white' p='5' mb='5' w='280px' borderRadius='5px'>
             <ModalUpdateComment modal={modal} closeModal={closeModal} updateComment={updateComment}/>
-           <Flex alignItems='center' gap='10' >
-                <Avatar name='Daniel Josias' color='white' bg='black' h='30px' w='30px' fontWeight='bold' borderRadius='15px'/>
+           <Flex alignItems='center' h='40px'>
+                
                 <Text
                     fontWeight='bold'
                     textOverflow='ellipsis'
@@ -60,10 +60,10 @@ export const Comments = ({content, item}) => {
                     w='250px'
                     color='black'
                 > {content} </Text>
-                <Box>
+                <Flex>
                     <Button border='none' bg='transparent' _hover={{color:'red'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' onClick={()=>deleteComment()}><Icon as={DeleteIcon} mr='10' cursor='pointer'/></Button>
                     <Button border='none' bg='transparent' _hover={{color:'blue'}} transition='all 0.2s cubic-bezier(.08,.52,.52,1)' onClick={()=>updateComment()}><Icon as={EditIcon}  cursor='pointer'/></Button>
-                </Box>
+                </Flex>
            </Flex>
         </Box>
     )

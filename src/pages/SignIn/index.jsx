@@ -54,10 +54,10 @@ export const SignIn = () => {
             <Heading mb='5'>Sign In</Heading>
             <FormControl isRequired borderRadius='0px 10px 0px 10px' bg='#D9D9D9' p='25'>
                 <FormLabel mt='10'>Name</FormLabel>
-                <Input value={name} onChange={(e) => setName(e.target.value)} color='white' bg='black' borderRadius='15px' variant='filled' placeholder='Name' />
+                <Input value={name} onChange={(e) => setName(e.target.value)} w='100%' color='white' bg='black' borderRadius='15px' variant='filled' placeholder='Name' />
 
                 <FormLabel mt='10'>Password</FormLabel>
-                <Input type='password' value={password} onChange={(e) => setPassword(e.target.value)} color='white' bg='black' borderRadius='15px' mb='3'variant='filled' placeholder='Password' />
+                <Input type='password' value={password} onChange={(e) => setPassword(e.target.value)} w='100%' color='white' bg='black' borderRadius='15px' mb='3'variant='filled' placeholder='Password' />
 
                 <Flex mt='5'>
                     <Button onClick={handleData} cursor='pointer' w='100%' p='4' border='none' fontWeight='bold' color='white' borderRadius='15px' colorScheme='white' bg='#B83CCC' mt='3' type='submit'>Entrar</Button>
